@@ -5,7 +5,7 @@ CFLAGS = -mmcu=$(TARGET) -Os
 PART = t261
 PROGRAMMER = usbasp
 
-.PHONY: clean hex
+.PHONY: clean program
 
 $(EXE).hex: pitch_robot
 	avr-objcopy -j .text -j .data -O ihex $(EXE) $(EXE).hex
