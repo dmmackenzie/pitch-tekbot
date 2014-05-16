@@ -1,4 +1,4 @@
 pitch-tekbot
 ============
 
-This repository is for programming an attiny261 to control a robot by detecting pitch from an internal signal
+This repository implements a pitch detection algorithm for an ATtiny261 and uses it to control a robot.
