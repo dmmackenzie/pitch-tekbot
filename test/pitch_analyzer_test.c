@@ -1,20 +1,20 @@
 #include <stdio.h>
 #include "../src/pitch_analyzer.h"
 
+#define SAMPLE_RATE 44100
 
 int test_pitch(FILE* fp) {
     int i, period, bytes;
     PitchContext c;
-    PitchContext* cx = &c;
     Sample buf[100];
 
-    pitch_init(cx);
+    pitch_init(&c);
 
     while ((bytes = fread(buf, 1, 100, fp)) > 0) {
         for (i = 0; i < bytes; ++i) {
-            period = pitch_sample(buf[i], cx);
+            period = pitch_sample(buf[i], &c);
             if (period > 0) {
-                printf("%d Hz\n", PITCH_GET_FREQ(period, 44100));
+                printf("%d Hz\n", SAMPLE_RATE / period );
             } else if(period < 0) {
                 printf("ERROR: %d\n", period);
             }
