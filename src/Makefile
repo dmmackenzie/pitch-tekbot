@@ -17,7 +17,7 @@ program: $(EXE).hex
 $(EXE): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
-pitch_robot.o: pitch_robot.c pitch_robot.h pitch_analyzer.h
+pitch_robot.o: pitch_robot.c pitch_analyzer.h
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 pitch_analyzer.o: pitch_analyzer.c pitch_analyzer.h
