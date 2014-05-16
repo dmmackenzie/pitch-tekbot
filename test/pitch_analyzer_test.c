@@ -14,7 +14,7 @@ int test_pitch(FILE* fp) {
         for (i = 0; i < bytes; ++i) {
             period = pitch_sample(buf[i], &c);
             if (period > 0) {
-                printf("%d Hz\n", SAMPLE_RATE / period );
+                printf("%d Hz\n", SAMPLE_RATE / period);
             } else if(period < 0) {
                 printf("ERROR: %d\n", period);
             }
