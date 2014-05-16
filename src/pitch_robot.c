@@ -222,6 +222,7 @@ void move_tekbot(int p)
             break;
         default:
             PORTB = STOP;
+            state = 0;
             break;
         }
 
@@ -230,7 +231,7 @@ void move_tekbot(int p)
             votes[i] = 0;
         }
 
-    // Close encounters: 196, 220, 175, 87, 131
+    // Close Encounters theme: G3 A4 F3 F2 C3
     }
 
     return;
