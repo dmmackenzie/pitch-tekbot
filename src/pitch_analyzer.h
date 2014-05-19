@@ -13,10 +13,11 @@ typedef unsigned char Sample;
 typedef struct PitchContext {
     volatile Sample prev;
     volatile Sample peak_amp;
-    volatile int timer, old_period;
+    volatile int timer;
+    volatile int old_period;
 } PitchContext;
 
-typedef enum Note {E2, F2, G2, A3, B3, C3, D3,E3, F3, G3, A4, B4, C4, D4, E4,
+typedef enum Note {E2, F2, G2, A3, B3, C3, D3, E3, F3, G3, A4, B4, C4, D4, E4,
                    F4, G4, A5, B5, C5, D5, ERROR} Note;
 
 /*
