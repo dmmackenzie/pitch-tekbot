@@ -15,7 +15,7 @@ Sample pitch_get_peak_amp(PitchContext* c)
 
 int pitch_sample(Sample s, PitchContext* c)
 {
-    int period;
+    int period = 0;
 
     c->timer += 1;
 
