@@ -1,7 +1,7 @@
 #include "pitch_analyzer.h"
 
-void pitch_init(PitchContext* c) {
-    c->prev = 128;
+void pitch_init(PitchContext* c)
+{
     c->peak_amp = 0;
     c->timer = 0;
     c->old_period = 0;
@@ -49,7 +49,9 @@ Note pitch_get_note(int period, int sample_rate)
 {
     int freq = sample_rate / period;
 
-    if (freq > 73 && freq < 85)
+    if (freq < 73)
+        return ERROR;
+    else if (freq < 85)
         return E2;
     else if (freq < 93)
         return F2;
