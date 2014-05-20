@@ -92,7 +92,9 @@ int main(void) {
 
 Note get_pitch(freq)
 {
-    if (freq > 73 && freq < 85)
+    if (freq < 73)
+        return ERROR;
+    else if (freq < 85)
         return E2;
     else if (freq < 93)
         return F2;
@@ -177,6 +179,8 @@ void move_tekbot(int p)
     // based on the pitch
     if (++(votes[pitch]) > VOTES) {
         switch (pitch) {
+        case E4:
+        case E3:
         case E2:
             PORTB = REVERSE;
             state = 0;
@@ -185,10 +189,12 @@ void move_tekbot(int p)
             PORTB = GO;
             state = 0;
             break;
+        case D4:
         case D3:
             PORTB = LEFT;
             state = 0;
             break;
+        case G2:
         case G3:
             PORTB = RIGHT;
             state = 1;
@@ -198,7 +204,7 @@ void move_tekbot(int p)
                 state = 2;
             else
                 state = 0;
-            PORTB = STOP;
+            PORTB = GO;
             break;
         case F3:
             if (state == 2 || state == 3)
