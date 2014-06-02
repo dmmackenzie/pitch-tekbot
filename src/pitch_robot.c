@@ -4,11 +4,11 @@
 #define SIGN(a) ((a) > 127)
 #define MAG(a) ((a) > 127 ? a - 127 : 127 - a)
 
-#define SIGNAL_FLOOR 35
+#define SIGNAL_FLOOR 25
 #define MIN_PERIOD 9
 #define MAX_PERIOD 1000
 #define CANTIDATES 15
-#define VOTES 25
+#define VOTES 10
 #define SAMPLE_RATE 9315
 #define MOTOR_MASK 0b00001111
 #define LED_MASK 0b00010000
@@ -35,7 +35,7 @@ ISR(ADC_vect) {
     s = ADCH;
 
     if (++timer < MIN_PERIOD) { // we are too close to a previous zero crossing
-        // do nothing
+        period = 0;
     } else if (timer >= MAX_PERIOD) { // we are too far from a previous zero crossing
         old_period = 0;
         period = -1;
